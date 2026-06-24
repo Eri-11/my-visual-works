@@ -1,0 +1,21 @@
+/*
+reset style
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+/*
+for canvas
+*/
+canvas {
+  display: block;
+  border: 1px solid #000;
+}
