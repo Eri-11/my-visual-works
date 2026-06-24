@@ -33,6 +33,8 @@ try {
 }
 
 export default defineConfig({
+  base: "/my-visual-works/",
+
   root: "./",
   build: {
     rollupOptions: {
