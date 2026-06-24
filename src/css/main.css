@@ -1,0 +1,32 @@
+body {
+  background-color: rgb(184, 186, 190);
+}
+.main-content {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding: 0 20px;
+}
+.heading01 {
+  margin-bottom: 24px;
+  font-weight: bold;
+  font-size: 48px;
+}
+.heading02 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.page-list {
+  display: grid;
+  row-gap: 16px;
+}
+.page-list__link {
+  color: #333dca;
+  font-weight: bold;
+  font-size: 18px;
+}
+.page-list__link:hover {
+  color: #fff;
+}
