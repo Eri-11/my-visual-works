@@ -1,5 +1,5 @@
-const canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const c = canvas.getContext('2d');
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
@@ -10,11 +10,11 @@ const mouse = {
 };
 
 // イベント
-addEventListener("mousemove", (event) => {
+addEventListener('mousemove', (event) => {
   mouse.x = event.clientX;
   mouse.y = event.clientY;
 });
-addEventListener("resize", () => {
+addEventListener('resize', () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 });
@@ -48,15 +48,15 @@ class Circle {
 
 // 隠される土台部分
 function drawHiddenContent() {
-  c.fillStyle = "white";
+  c.fillStyle = 'white';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
-  c.fillStyle = "orange";
+  c.fillStyle = 'orange';
   c.fillRect(300, canvas.height - 100, 50, 50);
 
-  c.font = "20px sans-serif";
-  c.fillStyle = "black";
-  c.fillText("黄色い四角形を探して。", 10, 50);
+  c.font = '20px sans-serif';
+  c.fillStyle = 'black';
+  c.fillText('黄色い四角形を探して。', 10, 50);
 }
 
 // 実装
@@ -73,7 +73,7 @@ function animation() {
   drawHiddenContent();
 
   // 全体を隠す
-  c.fillStyle = "rgba(0, 0, 0, 1)";
+  c.fillStyle = 'rgba(0, 0, 0, 1)';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
   clipCircle.update(); // マウス追尾

@@ -1,11 +1,11 @@
-const canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const c = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // ブラウザのリサイズイベント
-addEventListener("resize", () => {
+addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   initCircles();
@@ -26,7 +26,7 @@ class Circle {
   draw() {
     c.beginPath(); // パスの開始
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); // 円、円弧を描く
-    c.fillStyle = "blue";
+    c.fillStyle = 'blue';
     c.fill();
     c.closePath();
   }
@@ -75,7 +75,7 @@ function animation(timestamp) {
   const elapsed = timestamp - startTime;
 
   requestAnimationFrame(animation);
-  c.fillStyle = "rgba(219, 215, 215, 0.2)"; // 残像はfillStyleとfillRectで表現
+  c.fillStyle = 'rgba(219, 215, 215, 0.2)'; // 残像はfillStyleとfillRectで表現
   c.fillRect(0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < circleArray.length; i++) {

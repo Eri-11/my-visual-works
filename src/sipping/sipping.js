@@ -132,7 +132,6 @@ function animation() {
       drinkCircleArrayB.shift();
     }
   }
-  // 描画は毎フレーム行う（そうしないとチカチカしてしまうため）
   drinkCircleArrayB.forEach((circle) => circle.update());
 
   glass();
