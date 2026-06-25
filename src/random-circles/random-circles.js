@@ -1,27 +1,27 @@
-const canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const c = canvas.getContext('2d');
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 const circleTypes = [
-  "circle",
-  "half-top",
-  "half-right",
-  "half-bottom",
-  "half-left",
-  "quarter-top-right",
-  "quarter-bottom-right",
-  "quarter-bottom-left",
-  "quarter-top-left",
+  'circle',
+  'half-top',
+  'half-right',
+  'half-bottom',
+  'half-left',
+  'quarter-top-right',
+  'quarter-bottom-right',
+  'quarter-bottom-left',
+  'quarter-top-left',
 ];
 
 // イベント
-addEventListener("resize", () => {
+addEventListener('resize', () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 });
-addEventListener("click", () => {
+addEventListener('click', () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 
@@ -43,69 +43,69 @@ class Circle {
 
   draw() {
     switch (this.type) {
-      case "circle":
+      case 'circle':
         this.drawCircle();
         break;
 
-      case "half-top":
+      case 'half-top':
         this.drawHalfTopCircle();
         break;
 
-      case "half-bottom":
+      case 'half-bottom':
         this.drawHalfBottomCircle();
         break;
 
-      case "half-right":
+      case 'half-right':
         this.drawHalfRightCircle();
         break;
 
-      case "half-left":
+      case 'half-left':
         this.drawHalfLeftCircle();
         break;
 
-      case "quarter-top":
+      case 'quarter-top':
         this.drawQuarterCircle();
         break;
 
-      case "quarter-bottom":
+      case 'quarter-bottom':
         this.drawQuarterCircle();
         break;
 
-      case "quarter-right":
+      case 'quarter-right':
         this.drawQuarterCircle();
         break;
 
-      case "quarter-left":
+      case 'quarter-left':
         this.drawQuarterCircle();
         break;
 
-      case "quarter-top-right":
+      case 'quarter-top-right':
         this.drawQuarterTopRight();
         break;
 
-      case "quarter-bottom-right":
+      case 'quarter-bottom-right':
         this.drawQuarterBottomRight();
         break;
 
-      case "quarter-bottom-left":
+      case 'quarter-bottom-left':
         this.drawQuarterBottomLeft();
         break;
 
-      case "quarter-top-left":
+      case 'quarter-top-left':
         this.drawQuarterTopLeft();
         break;
     }
   }
 
   drawCircle() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     c.fill();
     c.closePath();
   }
   drawHalfTopCircle() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, Math.PI, Math.PI * 2);
@@ -113,7 +113,7 @@ class Circle {
     c.fill();
   }
   drawHalfBottomCircle() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, 0, Math.PI);
@@ -121,7 +121,7 @@ class Circle {
     c.fill();
   }
   drawHalfRightCircle() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, -Math.PI / 2, Math.PI / 2);
@@ -129,7 +129,7 @@ class Circle {
     c.fill();
   }
   drawHalfLeftCircle() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, Math.PI / 2, Math.PI * 1.5);
@@ -137,7 +137,7 @@ class Circle {
     c.fill();
   }
   drawQuarterTopRight() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, -Math.PI / 2, 0);
@@ -145,7 +145,7 @@ class Circle {
     c.fill();
   }
   drawQuarterBottomRight() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, 0, Math.PI / 2);
@@ -153,7 +153,7 @@ class Circle {
     c.fill();
   }
   drawQuarterBottomLeft() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, Math.PI / 2, Math.PI);
@@ -161,7 +161,7 @@ class Circle {
     c.fill();
   }
   drawQuarterTopLeft() {
-    c.fillStyle = "#dfd9bb";
+    c.fillStyle = '#dfd9bb';
     c.beginPath();
     c.moveTo(this.x, this.y);
     c.arc(this.x, this.y, this.radius, Math.PI, Math.PI * 1.5);
@@ -201,7 +201,7 @@ function init() {
 // アニメーション
 function animation() {
   requestAnimationFrame(animation);
-  c.fillStyle = "black";
+  c.fillStyle = 'black';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
   circleArray.forEach((circle) => {

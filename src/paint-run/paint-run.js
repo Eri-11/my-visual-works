@@ -1,5 +1,5 @@
-const canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const c = canvas.getContext('2d');
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
@@ -33,7 +33,7 @@ function init() {
     const radius = 100;
     const x = radius + i * radius * 2 + 20;
     const y = -50 + -50 * i * 2;
-    circleArray.push(new Circle(x, y, radius, "blue"));
+    circleArray.push(new Circle(x, y, radius, 'blue'));
   }
 }
 

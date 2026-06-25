@@ -1,11 +1,11 @@
-const canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const c = canvas.getContext('2d');
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 // リサイズイベント
-addEventListener("resize", () => {
+addEventListener('resize', () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 
@@ -39,7 +39,7 @@ class Particle {
     this.draw = () => {
       c.beginPath();
       c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-      c.fillStyle = "#81c2f7";
+      c.fillStyle = '#81c2f7';
       c.fill();
       c.closePath();
     };
@@ -59,9 +59,7 @@ function init() {
   for (let i = 0; i < 6; i++) {
     radians = radians;
     console.log(radians);
-    particleArray.push(
-      new Particle(canvas.width / 2, canvas.height / 2, 16, radians),
-    );
+    particleArray.push(new Particle(canvas.width / 2, canvas.height / 2, 16, radians));
     radians = radians + (1 / 3) * Math.PI;
   }
 }
@@ -70,7 +68,7 @@ function init() {
 function guide() {
   c.beginPath();
   c.arc(canvas.width / 2, canvas.height / 2, 100, 0, Math.PI * 2, false);
-  c.strokeStyle = "black";
+  c.strokeStyle = 'black';
   c.stroke();
 }
 
