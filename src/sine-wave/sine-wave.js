@@ -7,25 +7,26 @@ canvas.height = window.innerHeight;
 addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  initCircles();
+  init();
 });
 
-class Circle {
-  constructor(x, y, radius, speed, amplitude, delayFrames) {
+class Square {
+  constructor(x, y, speed, amplitude, delayFrames, side) {
     this.x = x;
     this.y = y;
     this.baseY = y;
-    this.radius = radius;
     this.speed = speed;
     this.amplitude = amplitude;
     this.delayTimer = delayFrames;
+    this.side = side;
 
     this.angle = 0;
   }
 
   draw() {
     c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    c.fillRect(this.x, this.y, this.side, this.side);
+
     c.fillStyle = '#fff';
     c.fill();
     c.closePath();
@@ -47,26 +48,35 @@ class Circle {
 }
 
 let circleArray;
-function initCircles() {
+function init() {
   circleArray = [];
+  c.fillStyle = 'rgb(0, 89, 181)'; // 初回の跡対策
+  c.fillRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < 60; i++) {
-    const radius = 3;
-    const x = radius + radius * 2 * i + i * 30;
+  const side = 10;
+  const gapSize = 4;
+  const quantity = 72;
+  const gaps = quantity - 1;
+
+  const totalWidth = side * quantity + gapSize * gaps;
+  const startX = (canvas.width - totalWidth) / 2;
+
+  for (let i = 0; i < quantity; i++) {
+    const x = startX + i * (side + gapSize);
     const y = canvas.height / 2;
     const speed = 0.03;
     const amplitude = 100; // 振幅
 
-    const delayFrames = i * 36; // 何フレーム待つか（12*n）
+    const delayFrames = i * 2; // 何フレーム待つか（12*n）
 
-    circleArray.push(new Circle(x, y, radius, speed, amplitude, delayFrames));
+    circleArray.push(new Square(x, y, speed, amplitude, delayFrames, side));
   }
 }
 
 // アニメーション
 function animation() {
   requestAnimationFrame(animation);
-  c.fillStyle = 'rgb(0, 0, 0)';
+  c.fillStyle = 'rgba(0, 89, 181, 0.01)';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
   circleArray.forEach((circle) => {
@@ -77,5 +87,5 @@ function animation() {
 /***************
   実行処理
 ***************/
-initCircles();
+init();
 animation();
