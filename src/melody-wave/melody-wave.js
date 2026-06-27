@@ -11,22 +11,25 @@ addEventListener('resize', () => {
 });
 
 class Circle {
-  constructor(x, y, radius, speed, amplitude, delayFrames) {
+  constructor(x, y, speed, amplitude, delayFrames, noteSide) {
     this.x = x;
     this.y = y;
     this.baseY = y;
-    this.radius = radius;
     this.speed = speed;
     this.amplitude = amplitude;
     this.delayTimer = delayFrames;
+    this.noteSide = noteSide;
 
     this.angle = 0;
   }
 
   draw() {
     c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = '#fff';
+    c.fillRect(this.x, this.y, this.noteSide, this.noteSide); // 符頭
+    c.fillRect(this.x + 10, this.y - 40, 2, 50);
+    c.fillRect(this.x + 10, this.y - 40, 15, 5);
+
+    c.fillStyle = '#000';
     c.fill();
     c.closePath();
   }
@@ -50,23 +53,30 @@ let circleArray;
 function initCircles() {
   circleArray = [];
 
-  for (let i = 0; i < 60; i++) {
-    const radius = 3;
-    const x = radius + radius * 2 * i + i * 30;
+  const noteSide = 10;
+  const gapSize = 50;
+  const quantity = 24;
+  const gaps = quantity - 1;
+
+  const totalWidth = noteSide * quantity + gapSize * gaps;
+  const startX = (canvas.width - totalWidth) / 2;
+
+  for (let i = 0; i < quantity; i++) {
+    const x = startX + i * (noteSide + gapSize) - 15;
     const y = canvas.height / 2;
     const speed = 0.03;
-    const amplitude = 100; // 振幅
+    const amplitude = 20; // 振幅
 
     const delayFrames = i * 36; // 何フレーム待つか（12*n）
 
-    circleArray.push(new Circle(x, y, radius, speed, amplitude, delayFrames));
+    circleArray.push(new Circle(x, y, speed, amplitude, delayFrames, noteSide));
   }
 }
 
 // アニメーション
 function animation() {
   requestAnimationFrame(animation);
-  c.fillStyle = 'rgb(0, 0, 0)';
+  c.fillStyle = 'rgb(255, 255, 255)';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
   circleArray.forEach((circle) => {
