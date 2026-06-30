@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+canvas-template.js
+user_memo*
 
 # Editor directories and files
 .vscode/*
