@@ -10,6 +10,29 @@
     <main class="main-content">
       <section>
         <div class="firstview">
+          <div class="canvas-wrap">
+            <canvas id="canvas" class="firstview__canvas" style="filter: url(#gooey)"> </canvas>
+
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none">
+              <defs>
+                <filter id="gooey">
+                  <!-- 半径15pxぶんぼかす ツマミ：stdDeviation -->
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+
+                  <!-- ぼかした対象に対してコントラストを超高くする ツマミ：25 -10 -->
+                  <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -10"
+                    result="gooey"
+                  />
+                  <!-- コントラストを上げすぎているので元の絵SourceGraphicを重ねる -->
+                  <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+                </filter>
+              </defs>
+            </svg>
+          </div>
+
           <h1 class="heading01">
             <span data-animation="pageTitle">my</span>
             <span data-animation="pageTitle">visual</span>
