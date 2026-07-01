@@ -63,19 +63,21 @@ heading
   /* background-color: #fff; */
 }
 .heading01 {
-  margin-bottom: 60px;
-  font-weight: bold;
-  font-size: 10vw;
-  line-height: 1;
-  color: #fff;
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  justify-content: flex-end;
+  height: 100vh;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+  font-size: 9vw;
+  line-height: 1;
+  color: #fff;
 }
 .canvas-wrap {
   position: absolute;
-  /* background-image: linear-gradient(#dbe5ec, #93a5ae); */
-  background-image: linear-gradient(#dbe6ec, #759baa);
+  background-image: linear-gradient(#dbe5ec, #93a5ae);
 }
 .firstview__canvas {
   width: 100%;
@@ -158,6 +160,12 @@ decorations
 }
 
 @media screen and (max-width: 767px) {
+  .heading01 {
+    height: auto;
+    width: 100vw;
+    padding: 80px 20px 40px;
+    font-size: 48px;
+  }
   .page-list {
     grid-template-columns: 1fr;
   }
