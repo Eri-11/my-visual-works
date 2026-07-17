@@ -67,9 +67,10 @@ heading
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 20px;
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   font-weight: bold;
   font-size: 9vw;
   line-height: 1;
@@ -161,8 +162,6 @@ decorations
 
 @media screen and (max-width: 767px) {
   .heading01 {
-    height: auto;
-    width: 100vw;
     padding: 80px 20px 40px;
     font-size: 48px;
   }
