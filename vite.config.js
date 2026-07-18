@@ -1,41 +1,40 @@
-import { defineConfig } from "vite";
-import { resolve, join } from "path";
-import { readdirSync, statSync } from "fs";
-import { fileURLToPath } from "url";
+import { defineConfig } from 'vite';
+import { resolve, join } from 'path';
+import { readdirSync, statSync } from 'fs';
+import { fileURLToPath } from 'url';
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
-// auto collect HTML files
+// 自動収集したHTMLを入れるオブジェクト
 const inputFiles = {
-  main: resolve(__dirname, "index.html"),
+  main: resolve(__dirname, 'index.html'),
 };
 
-const srcDir = resolve(__dirname, "src");
+const targetDirs = [resolve(__dirname, '2d'), resolve(__dirname, '3d')];
 
-try {
-  const files = readdirSync(srcDir);
+targetDirs.forEach((dirPath) => {
+  try {
+    const files = readdirSync(dirPath);
 
-  files.forEach((file) => {
-    const fullPath = join(srcDir, file);
+    files.forEach((file) => {
+      const fullPath = join(dirPath, file);
 
-    if (statSync(fullPath).isDirectory() && file !== "css") {
-      const htmlPath = join(fullPath, "index.html");
+      if (statSync(fullPath).isDirectory()) {
+        const htmlPath = join(fullPath, 'index.html');
 
-      try {
-        if (statSync(htmlPath).isFile()) {
-          inputFiles[file] = htmlPath;
-        }
-      } catch (e) {}
-    }
-  });
-} catch (e) {
-  console.error("srcディレクトリの読み込みに失敗:", e);
-}
+        try {
+          if (statSync(htmlPath).isFile()) {
+            inputFiles[file] = htmlPath;
+          }
+        } catch (e) {}
+      }
+    });
+  } catch (e) {}
+});
 
 export default defineConfig({
-  base: "/my-visual-works/",
-
-  root: "./",
+  base: '/my-visual-works/',
+  root: './',
   build: {
     rollupOptions: {
       input: inputFiles,
