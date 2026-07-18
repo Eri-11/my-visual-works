@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-canvas-template.js
+private 
 user_memo*
 
 # Editor directories and files
