@@ -20,7 +20,7 @@
   border: 1px solid;
 }
 .content {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /*
@@ -34,4 +34,13 @@
 }
 .heading02 {
   font-size: 120px;
+}
+
+.text-layout {
+  display: grid;
+  row-gap: 20px;
+  font-size: 18px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
 }

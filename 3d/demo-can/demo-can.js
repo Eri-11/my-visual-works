@@ -49,6 +49,8 @@ const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader);
 let model;
 
+// const localYAxis = new THREE.Vector3(0, 1, 0);
+
 gltfLoader.load('/my-visual-works/models/can.glb', (gltf) => {
   model = gltf.scene;
   model.scale.set(0.5, 0.5, 0.5);
@@ -60,40 +62,76 @@ gltfLoader.load('/my-visual-works/models/can.glb', (gltf) => {
     ease: 'none',
     scrollTrigger: {
       trigger: '.whatIsACan',
-      start: 'top 80%', // 画面の下側に見え始めたらズーム開始
-      end: 'top 20%', // 画面の上側に来るまでにズーム完了
+      start: 'top 80%',
+      end: 'top 20%',
       scrub: 1,
     },
   });
-});
 
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.demoCan',
-    start: 'top top',
-    end: '+=100%',
-    pin: true,
-    markers: true,
-  },
-});
-tl.from('[data-animation="heading01"]', {
-  opacity: 0,
-  y: 30,
-  stagger: 0.7,
-});
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.demoCan',
+      start: 'top top',
+      end: '+=100%',
+      pin: true,
+      markers: true,
+    },
+  });
+  tl.from('[data-animation="heading01"]', {
+    opacity: 0,
+    y: 30,
+    stagger: 0.7,
+  });
 
-gsap.from('[data-animation="whatIsACanH2"]', {
-  opacity: 0,
-  // y: 30,
-  duration: 0.3,
-  delay: 1,
-  scrollTrigger: {
-    trigger: '.whatIsACan',
-    start: 'top center',
-    end: '+=20%',
-    toggleActions: 'play none none reverse',
-    scrub: true,
-  },
+  const historyTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.historyOfTheCan',
+      start: 'top 80%',
+      end: 'top 20%',
+      scrub: 1,
+    },
+  });
+  historyTl.to(
+    model.position,
+    {
+      x: 1.5,
+      y: 0.9,
+      ease: 'none',
+    },
+    0
+  );
+  historyTl.to(
+    model.rotation,
+    {
+      x: -0.8,
+      z: 1,
+      ease: 'none',
+    },
+    0
+  );
+  historyTl.to(
+    model.scale,
+    {
+      x: 0.2,
+      y: 0.2,
+      z: 0.2,
+      ease: 'none',
+    },
+    0
+  );
+
+  gsap.from('[data-animation="whatIsACanH2"]', {
+    opacity: 0,
+    duration: 0.5,
+    delay: 1,
+    scrollTrigger: {
+      trigger: '.whatIsACan',
+      start: 'top center',
+      end: '+=30%',
+      toggleActions: 'play none none reverse',
+      scrub: true,
+    },
+  });
 });
 
 /***************
@@ -138,6 +176,7 @@ window.addEventListener('resize', () => {
 const renderloop = () => {
   if (model) {
     model.rotation.y += 0.003;
+    // model.rotateOnAxis(localYAxis, 0.003);
   }
 
   controls.update();
