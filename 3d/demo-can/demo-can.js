@@ -18,7 +18,24 @@ gsap.registerPlugin(ScrollTrigger);
   シーンの作成
 ***************/
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#e7eaeb');
+scene.background = new THREE.Color('#e4e7e7');
+
+/***************
+  カメラの作成
+***************/
+let camera;
+camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0, 1.2, 10);
+
+/***************
+  ライトの作成
+***************/
+const ambientLight = new THREE.AmbientLight('#f8e960', 0.5); // 全体を均等に
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight('#8efff9', 100); // 斜めから強い光
+pointLight.position.set(1, 5, 5);
+scene.add(pointLight);
 
 /***************
   モデル読み込み
@@ -35,25 +52,49 @@ let model;
 gltfLoader.load('/my-visual-works/models/can.glb', (gltf) => {
   model = gltf.scene;
   model.scale.set(0.5, 0.5, 0.5);
-
   scene.add(model);
+
+  gsap.to(camera.position, {
+    z: 4,
+    y: 1.2,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.whatIsACan',
+      start: 'top 80%', // 画面の下側に見え始めたらズーム開始
+      end: 'top 20%', // 画面の上側に来るまでにズーム完了
+      scrub: 1,
+    },
+  });
 });
 
-/***************
-  ライトの作成
-***************/
-const ambientLight = new THREE.AmbientLight('#f8e960', 0.5); // 全体を均等に
-scene.add(ambientLight);
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.demoCan',
+    start: 'top top',
+    end: '+=100%',
+    pin: true,
+    markers: true,
+  },
+});
+tl.from('[data-animation="heading01"]', {
+  opacity: 0,
+  y: 30,
+  stagger: 0.7,
+});
 
-const pointLight = new THREE.PointLight('#8efff9', 100); // 斜めから強い光
-pointLight.position.set(1, 5, 5);
-scene.add(pointLight);
-
-/***************
-  カメラの作成
-***************/
-const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 200);
-camera.position.set(0, 1.2, 10);
+gsap.from('[data-animation="whatIsACanH2"]', {
+  opacity: 0,
+  // y: 30,
+  duration: 0.3,
+  delay: 1,
+  scrollTrigger: {
+    trigger: '.whatIsACan',
+    start: 'top center',
+    end: '+=20%',
+    toggleActions: 'play none none reverse',
+    scrub: true,
+  },
+});
 
 /***************
   レンダー、コントロール
@@ -96,7 +137,7 @@ window.addEventListener('resize', () => {
 // シーンのレンダー（アニメーション）
 const renderloop = () => {
   if (model) {
-    model.rotation.y += 0.002;
+    model.rotation.y += 0.003;
   }
 
   controls.update();
@@ -112,33 +153,3 @@ renderloop();
 /***************
   テキストコンテンツ GSAP
 ***************/
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.demoCan',
-    start: 'top top',
-    end: '+=150%',
-    pin: true,
-    markers: true,
-  },
-});
-tl.from('[data-animation="heading01"]', {
-  opacity: 0,
-  y: 30,
-  stagger: 0.7,
-});
-
-gsap.from('[data-animation="heading02"]', {
-  opacity: 0,
-  // y: 30,
-  duration: 0.3,
-  delay: 1,
-  scrollTrigger: {
-    trigger: '.whatIsACan',
-    start: 'top center',
-    end: '+=50%',
-    toggleActions: 'play none none reverse',
-    scrub: true,
-
-    // markers: true,
-  },
-});
