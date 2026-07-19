@@ -74,7 +74,7 @@ gltfLoader.load('/my-visual-works/models/can.glb', (gltf) => {
       start: 'top top',
       end: '+=100%',
       pin: true,
-      markers: true,
+      // markers: true,
     },
   });
   tl.from('[data-animation="heading01"]', {
@@ -188,7 +188,3 @@ const renderloop = () => {
   実行処理
 ***************/
 renderloop();
-
-/***************
-  テキストコンテンツ GSAP
-***************/
