@@ -1,0 +1,46 @@
+.main {
+  position: relative;
+}
+
+/*
+  canvas
+*/
+.canvas-wrap {
+  position: fixed;
+  height: 100vh;
+  z-index: -10;
+}
+
+/*
+  base
+*/
+.textcontent-wrap {
+  /* margin: 0 20px; */
+  padding: 20px;
+  border: 1px solid;
+}
+.content {
+  min-height: 100vh;
+}
+
+/*
+  details
+*/
+.heading01 {
+  display: flex;
+  flex-direction: column;
+  font-size: 240px;
+  line-height: 1;
+}
+.heading02 {
+  font-size: 120px;
+}
+
+.text-layout {
+  display: grid;
+  row-gap: 20px;
+  font-size: 18px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
