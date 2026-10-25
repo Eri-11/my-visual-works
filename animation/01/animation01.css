@@ -1,0 +1,158 @@
+:root {
+  --red: #e25141;
+  --green: #04a26e;
+  --blue: #004c9c;
+  --light-pink: #ebc5bb;
+  --light-blue: #2aace2;
+  --white: #fff;
+  --black: #000;
+}
+
+.body {
+  background-color: var(--blue);
+}
+.content-wrapper {
+  margin-bottom: 48px;
+}
+.text-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+.text-wrap p:first-child {
+  font-size: 32px;
+  font-family: 'Titan One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*
+- stage: 演出を表示する画面
+*/
+
+/*
+contentA
+js：必要（gsap）
+*/
+.contentA {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+.contentA__stage {
+  position: relative;
+  height: 100vh;
+}
+.contentA__item01,
+.contentA__item02 {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+}
+.contentA__item01 {
+  background-color: var(--red);
+  box-shadow: 0px 5px 8px 0px #606063;
+  z-index: 2;
+}
+.contentA__item02 {
+  color: var(--light-pink);
+  background-color: var(--green);
+  z-index: 1;
+}
+.contentA__item03 {
+  position: relative;
+  height: 480px;
+  background-color: var(--red);
+}
+
+/*
+contentB
+js：不要
+*/
+.contentB {
+  position: relative;
+  margin-top: 60px;
+  overflow: clip;
+}
+.contentB__background {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  margin-bottom: -100vh;
+  background-image: url('/images/img_plaid.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+.contentB__item01 {
+  height: 600px;
+  background-color: var(--light-pink);
+  color: var(--blue);
+}
+.contentB__item02 {
+  height: 360px;
+  background-color: var(--red);
+  color: var(--light-pink);
+  margin-top: 360px;
+}
+.contentB__item03 {
+  height: 480px;
+  background-color: var(--light-pink);
+  color: var(--blue);
+}
+
+/*
+contentC
+js：必要（gsap）
+*/
+.contentC {
+  margin-top: 60px;
+}
+.contentC__stage {
+  position: relative;
+}
+.contentC__mask {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  background-color: var(--green);
+  --hole-size: 80px;
+  mask-image: radial-gradient(circle var(--hole-size) at 50% 50%, transparent 99%, black 100%);
+}
+.contentC__item01 {
+  height: 100vh;
+  margin-top: -100vh;
+  background-color: var(--light-pink);
+  color: var(--red);
+}
+
+/*
+contentD
+js：必要（gsap）
+*/
+.contentD {
+  position: relative;
+  width: 100%;
+  margin-top: 60px;
+  overflow: clip;
+  height: 100vh;
+  padding: 50px 0;
+}
+.contentD__stage {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.contentD__item {
+  flex-shrink: 0;
+  width: 60%;
+  border: 1px solid var(--black);
+  background-color: var(--green);
+  color: var(--black);
+}
