@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll</title>
+    <link rel="stylesheet" href="./animation01.css" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet" />
+  </head>
+  <body class="body">
+    <div class="content-wrapper">
+      <!-- contentA開始 -->
+      <div class="contentA">
+        <div class="contentA__stage">
+          <div id="aItem01" class="contentA__item01">
+            <div class="text-wrap">
+              <p>contentA 01</p>
+              <p>スクロールによって、02の上を通過</p>
+            </div>
+          </div>
+          <div class="contentA__item02">
+            <div class="text-wrap">
+              <p>contentA 02</p>
+              <p>トリガーから200%分スクロールされたとき、02の固定が外れる</p>
+            </div>
+          </div>
+        </div>
+        <div class="contentA__item03">
+          <div class="text-wrap">
+            <p>contentA 03</p>
+            <p>02の固定解除後は通常スクロール</p>
+          </div>
+        </div>
+      </div>
+      <!-- contentA終了 -->
+      <!-- contentB開始 -->
+      <div id="contentB" class="contentB">
+        <div class="contentB__background"></div>
+        <div class="contentB__item01">
+          <div class="text-wrap">
+            <p>contentB 01</p>
+            <p>通常スクロール</p>
+          </div>
+        </div>
+        <div class="contentB__item02">
+          <div class="text-wrap">
+            <p>contentB 02</p>
+            <p>通常スクロール</p>
+          </div>
+        </div>
+        <div class="contentB__item03">
+          <div class="text-wrap">
+            <p>contentB 03</p>
+            <p>通常スクロール</p>
+          </div>
+        </div>
+      </div>
+      <!-- contentB終了 -->
+      <!-- contentC開始 -->
+      <div id="contentC" class="contentC">
+        <div class="contentC__stage">
+          <div class="contentC__mask"></div>
+          <div class="contentC__item01">
+            <div class="text-wrap">
+              <p>contentC 01</p>
+              <p>スクロールによって、表示領域が変化</p>
+              <p>200%分スクロールされたとき、01の固定が外れる</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- contentC終了 -->
+      <!-- contentD開始 -->
+      <div id="contentD" class="contentD">
+        <div class="contentD__stage">
+          <div class="contentD__item">
+            <div class="text-wrap">
+              <p>contentD 01</p>
+              <p>スクロールによって、横方向に通過</p>
+              <p>ただしBAD UI</p>
+            </div>
+          </div>
+          <div class="contentD__item">
+            <div class="text-wrap">
+              <p>contentD 02</p>
+              <p>スクロールによって、横方向に通過</p>
+            </div>
+          </div>
+          <div class="contentD__item">
+            <div class="text-wrap">
+              <p>contentD 03</p>
+              <p>スクロールによって、横方向に通過</p>
+            </div>
+          </div>
+          <div class="contentD__item">
+            <div class="text-wrap">
+              <p>contentD 04</p>
+              <p>スクロールによって、横方向に通過</p>
+            </div>
+          </div>
+          <div class="contentD__item">
+            <div class="text-wrap">
+              <p>contentD 05</p>
+              <p>スクロールによって、横方向に通過</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- contentD終了 -->
+      <div>test</div>
+    </div>
+
+    <script type="module" src="../../src/js/main.js"></script>
+    <script type="module" src="./animation01.js"></script>
+  </body>
+</html>
