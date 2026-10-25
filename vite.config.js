@@ -10,9 +10,10 @@ const inputFiles = {
   main: resolve(__dirname, 'index.html'),
 };
 
-const targetDirs = [resolve(__dirname, '2d'), resolve(__dirname, '3d')];
+const targetDirs = ['2d', '3d', 'animation'];
 
-targetDirs.forEach((dirPath) => {
+targetDirs.forEach((dirName) => {
+  const dirPath = resolve(__dirname, dirName);
   try {
     const files = readdirSync(dirPath);
 
@@ -24,7 +25,8 @@ targetDirs.forEach((dirPath) => {
 
         try {
           if (statSync(htmlPath).isFile()) {
-            inputFiles[file] = htmlPath;
+            const inputName = `${dirName}-${file}`;
+            inputFiles[inputName] = htmlPath;
           }
         } catch (e) {}
       }
